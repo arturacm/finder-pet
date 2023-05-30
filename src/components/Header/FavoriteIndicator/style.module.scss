@@ -1,0 +1,14 @@
+@import '../../../styles/colors.scss';
+
+.container {
+    display: flex;
+    gap: 8px;
+    text-transform: uppercase;
+    background-color: $gray-200;
+    color: $gray-300;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    align-items: center;
+}

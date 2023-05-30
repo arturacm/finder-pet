@@ -1,0 +1,26 @@
+@import '../../styles/colors.scss';
+
+.container {
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    margin: 40px 20px;
+}
+
+.intro {
+    color: $gray-700;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    color: $gray-900;
+}
