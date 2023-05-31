@@ -1,0 +1,15 @@
+@import '../../styles/colors.scss';
+@import '../../styles/mixins.scss';
+
+.button {
+    background-color: $red-400;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 600;
+    color: $primary-white;
+    font-size: 14px;
+    cursor: pointer;
+
+    @include simple-hover;
+}
