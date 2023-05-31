@@ -1,0 +1,13 @@
+@import '../../styles/colors.scss';
+@import '../../styles/mixins.scss';
+
+.buttonIcon {
+  width: fit-content;
+  cursor: pointer;
+  height: fit-content;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  @include flex-centered;
+  @include simple-hover;
+}
