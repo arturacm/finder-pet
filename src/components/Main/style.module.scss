@@ -1,0 +1,8 @@
+@import '../../styles/colors.scss';
+@import '../../styles/mixins.scss';
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
