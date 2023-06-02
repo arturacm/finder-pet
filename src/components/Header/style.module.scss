@@ -1,26 +1,62 @@
 @import '../../styles/colors.scss';
+@import '../../styles/mixins.scss';
 
 .container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-    align-items: center;
-    margin: 40px 20px;
+  align-items: center;
+  margin: 40px 20px;
 }
 
 .intro {
-    color: $gray-700;
+  color: $gray-700;
 }
 
 .logoContainer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu {
+  @include for-desktop-up {
+    display: none;
+  }
+}
+
+.mobileLogo {
+  @include for-tablet-portrait-up {
+    display: none;
+  }
+}
+
+.tablet {
+  font-size: 20px;
+  color: $gray-700;
+  display: none;
+
+  @include for-tablet-portrait-up {
+    display: block;
+  }
 }
 
 .links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 100px;
+  color: $gray-900;
+}
+
+.desktopLinks {
+  text-decoration: none;
+  color: $gray-900;
+
+  display: none;
+
+  @include for-desktop-up {
     display: flex;
-    justify-content: space-between;
-    gap: 100px;
-    color: $gray-900;
+    gap: 32px;
+  }
 }
