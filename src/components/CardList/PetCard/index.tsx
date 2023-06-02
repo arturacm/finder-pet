@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './style.module.scss';
+import SaveToggle from '../SaveToggle';
 
 interface PetCardProps {
   image: string;
@@ -25,6 +26,7 @@ const PetCard = ({
         <h2>{name}</h2>
         <p>{`${breed}, ${age}-years-old, ${weight}kg`}</p>
       </div>
+      <SaveToggle />
     </div>
   );
 };

@@ -1,0 +1,35 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/mixins.scss';
+
+.saveToggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 8px;
+    @include simple-hover;
+    cursor: pointer;
+    border: none;
+    transition: width .2s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    gap: 8px;
+}
+
+.selected {
+    padding-left: 10px;
+    background-color: $beige-400;
+    color: $red-400;
+    width: 90px;
+}
+
+.unselected {
+    background-color: $primary-white;
+    justify-content: center;
+}
