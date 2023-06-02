@@ -5,11 +5,17 @@
    border-radius: 8px;
    position: relative;
    height: fit-content;
-   max-width: calc(100vw - 30px);
+   width: 100%;
+   flex: 1;
    overflow: hidden;
    display: flex;
    align-items: stretch;
    justify-content: stretch;
+
+   img {
+    max-width: calc(100vw - 60px);
+    flex: 1;
+   }
 
 }
 
