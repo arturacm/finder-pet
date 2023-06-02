@@ -3,6 +3,8 @@ import close from '/icons/cross.svg';
 import Button from '../../Button';
 import ButtonIcon from '../../ButtonIcon';
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import routes from '../../../routes/routes';
 
 const messages = {
   about: 'About',
@@ -50,14 +52,13 @@ const Drawer = ({ onClose, open, className }: DrawerProps) => {
       <div className={`${style.drawer} ${open ? style.closing : ''}`}>
         <ButtonIcon onClick={onClose} src={close} width={40} height={40} />
         <nav className={style.info}>
-          <a href="#">{messages.about}</a>
+          <Link to={routes.about}>{messages.about}</Link>
           <a href="#"> {messages.contact}</a>
         </nav>
         <hr className={style.divider} />
         <nav className={style.signIn}>
           <Button>{messages.signIn}</Button>
           <p className={style.signup}>
-            {`${open}`}
             {messages.notMember} <a href="#">{messages.signUp}</a>
           </p>
         </nav>

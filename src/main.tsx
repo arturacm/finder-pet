@@ -4,12 +4,18 @@ import Home from './routes/Home.tsx';
 import './index.scss';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './routes/ErrorPage.tsx';
+import About from './routes/About/index.tsx';
 import routes from './routes/routes.ts';
 
 const router = createBrowserRouter([
   {
     path: routes.home,
     element: <Home />,
+    errorElement: <ErrorPage/>
+  },
+  {
+    path: routes.about,
+    element: <About />,
     errorElement: <ErrorPage/>
   },
 ]);
