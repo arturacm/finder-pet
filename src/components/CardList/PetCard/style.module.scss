@@ -1,0 +1,35 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/mixins.scss';
+
+.petCard {
+   border-radius: 8px;
+   position: relative;
+   height: fit-content;
+   max-width: calc(100vw - 30px);
+   overflow: hidden;
+   display: flex;
+   align-items: stretch;
+   justify-content: stretch;
+
+}
+
+.label {
+    box-sizing: border-box;
+    background-color: $primary-white;
+    padding: 30px;
+    border-radius: 8px;
+    width: calc(100% - 60px);
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    h2 {
+        margin: 0;
+        color: $gray-900;
+    }
+
+    p {
+        font-weight: 500;
+        margin: 0;
+        color: $gray-700;
+    }
+}

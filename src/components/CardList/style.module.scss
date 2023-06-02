@@ -1,0 +1,9 @@
+@import '../../styles/colors.scss';
+@import '../../styles/mixins.scss';
+
+.cardList {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px
+}
