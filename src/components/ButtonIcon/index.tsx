@@ -6,13 +6,20 @@ interface ButtonIcon
     React.ImgHTMLAttributes<HTMLImageElement>,
     HTMLImageElement
   > {
-    onClick: ()=>void;
-  }
+  onClick: () => void;
+}
 
-const ButtonIcon = ({ onClick, ...rest }: ButtonIcon): React.ReactElement => {
+const ButtonIcon = ({
+  onClick,
+  className,
+  ...rest
+}: ButtonIcon): React.ReactElement => {
   return (
-    <button className={style.buttonIcon} onClick={onClick}>
-      <img {...rest}/>
+    <button
+      className={`${style.buttonIcon} ${className ?? ''}`}
+      onClick={onClick}
+    >
+      <img {...rest} />
     </button>
   );
 };
