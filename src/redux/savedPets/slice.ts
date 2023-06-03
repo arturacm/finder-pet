@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { z } from 'zod';
 
 const savedPetsStorageKey = 'finder-pet/savedPets';
 
@@ -7,13 +8,19 @@ const persistData = (state: string[]) => {
   localStorage.setItem(savedPetsStorageKey, JSON.stringify(state));
 };
 
-type SavedPetsState = {
-  savedPets: Array<string>;
-};
+const savedPetsSchema = z.object({
+  savedPets: z.array(z.string().uuid()),
+});
 
-const initialState: SavedPetsState = {
+const validatedSchema = savedPetsSchema.safeParse({
   savedPets: JSON.parse(localStorage.getItem(savedPetsStorageKey) ?? '[]'),
-};
+});
+
+const initialState = validatedSchema.success
+  ? validatedSchema.data
+  : {
+      savedPets: new Array<string>(),
+    };
 
 const savedPetsSlice = createSlice({
   name: 'savedPets',

@@ -22,7 +22,8 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.7",
     "react-router-dom": "^6.11.2",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
