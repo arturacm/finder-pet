@@ -32,8 +32,8 @@ const petsData = [
   },
 ] as const;
 const CardList = (): React.ReactElement => {
-  const cards = petsData.map(({ id, ...props }) => (
-    <PetCard {...props} key={id} />
+  const cards = petsData.map((props) => (
+    <PetCard {...props} key={props.id} />
   ));
 
   return <div className={style.cardList}>{cards}</div>;
