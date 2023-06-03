@@ -1,6 +1,6 @@
 @import '../../../styles/colors.scss';
 
-.container {
+.favoriteIndicator {
     display: flex;
     gap: 8px;
     text-transform: uppercase;
@@ -11,4 +11,9 @@
     font-weight: 600;
     font-size: 14px;
     align-items: center;
+
+    &.displayQuantity {
+        background-color: $beige-400;
+        color: $red-400;
+    }
 }
