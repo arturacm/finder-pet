@@ -8,6 +8,8 @@ import fullLogo from '/logo-full.svg';
 import ButtonIcon from '../ButtonIcon';
 import { Link } from 'react-router-dom';
 import routes from '../../routes/routes';
+import { login } from '../../redux/user/slice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 const messages = {
   intro: "let's explore your pet!",
@@ -20,6 +22,11 @@ const messages = {
 
 const Header = (): React.ReactElement => {
   const [open, setOpen] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const isUserLogged = useAppSelector(
+    rootReducer => rootReducer.userReducer.user,
+  );
 
   const handleClose = useCallback(() => setOpen(false), []);
 
@@ -35,7 +42,11 @@ const Header = (): React.ReactElement => {
             alt={messages.mobileLogo}
             className={style.mobileLogo}
           />
-          <img src={fullLogo} alt={messages.fullLogo} className={style.tablet} />
+          <img
+            src={fullLogo}
+            alt={messages.fullLogo}
+            className={style.tablet}
+          />
         </Link>
         <p className={style.tablet}>{messages.intro}</p>
         <Drawer open={open} onClose={handleClose} className={style.menu} />
@@ -50,8 +61,9 @@ const Header = (): React.ReactElement => {
           </a>
         </nav>
         <FavoriteIndicator />
-        <a href="#" className={style.desktopLinks}>
-          {messages.login}
+
+        <a onClick={() => dispatch(login())} className={style.desktopLinks}>
+          {isUserLogged ? 'logout' : messages.login}
         </a>
       </nav>
     </header>

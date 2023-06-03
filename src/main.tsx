@@ -7,6 +7,9 @@ import ErrorPage from './routes/ErrorPage.tsx';
 import About from './routes/About/index.tsx';
 import routes from './routes/routes.ts';
 
+import { Provider } from 'react-redux';
+import store from './redux/store.ts';
+
 const router = createBrowserRouter([
   {
     path: routes.home,
@@ -22,6 +25,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 );
