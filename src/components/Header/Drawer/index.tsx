@@ -36,10 +36,13 @@ const Drawer = ({ onClose, open, className }: DrawerProps) => {
 
     window.addEventListener('keypress', handleEscape);
 
+    window.addEventListener('scroll', onClose);
+
     return () => {
       if (overlayElement) overlayElement.removeEventListener('click', onClose);
 
       window.removeEventListener('keydown', handleEscape);
+      window.removeEventListener('scroll', onClose);
     };
   }, [onClose]);
 
