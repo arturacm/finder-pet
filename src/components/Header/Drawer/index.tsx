@@ -62,7 +62,7 @@ const Drawer = ({ onClose, open, className }: DrawerProps) => {
         <nav className={style.signIn}>
           <Button>{messages.signIn}</Button>
           <p className={style.signup}>
-            {messages.notMember} <a href="#">{messages.signUp}</a>
+            {messages.notMember} <Link to={routes.signUp}>{messages.signUp}</Link>
           </p>
         </nav>
       </div>

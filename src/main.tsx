@@ -9,6 +9,7 @@ import routes from './routes/routes.ts';
 
 import { Provider } from 'react-redux';
 import store from './redux/store.ts';
+import SignUp from './routes/SignUp/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
   {
     path: routes.about,
     element: <About />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: routes.signUp,
+    element: <SignUp />,
     errorElement: <ErrorPage />,
   },
 ]);
