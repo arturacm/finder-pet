@@ -5,11 +5,11 @@ import style from './style.module.scss';
 import menu from '/icons/Menu.svg';
 import mobileLogo from '/logo-small.svg';
 import fullLogo from '/logo-full.svg';
-import ButtonIcon from '../ButtonIcon';
+import ButtonIcon from '@/components/ButtonIcon';
 import { Link } from 'react-router-dom';
-import routes from '../../routes/routes';
-import { login } from '../../redux/user/slice';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import routes from '@/routes/routes';
+import { login } from '@/redux/user/slice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 
 const messages = {
   intro: "let's explore your pet!",

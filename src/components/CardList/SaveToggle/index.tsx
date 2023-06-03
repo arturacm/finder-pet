@@ -2,9 +2,9 @@ import React, { useCallback } from 'react';
 import style from './style.module.scss';
 import grayHeart from '/icons/Heart-gray.svg';
 import redHeart from '/icons/Heart-red.svg';
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import { selectSavedPet } from '../../../redux/savedPets/selectors';
-import { remove, save } from '../../../redux/savedPets/slice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { selectSavedPet } from '@/redux/savedPets/selectors';
+import { remove, save } from '@/redux/savedPets/slice';
 
 const messages = {
   iconAlt: 'heart',

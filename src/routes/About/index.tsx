@@ -1,8 +1,8 @@
-import Header from '../../components/Header';
-import Main from '../../components/Main';
+import Header from '@/components/Header';
+import Main from '@/components/Main';
 import petsCompilation from '/pets-compilation.png';
 import style from './style.module.scss';
-import Button from '../../components/Button';
+import Button from '@/components/Button';
 
 const messages = {
   head: 'Faucibus varius ultrices sollicitudin.',

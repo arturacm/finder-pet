@@ -1,7 +1,7 @@
-import CardList from '../components/CardList';
-import Header from '../components/Header';
-import Main from '../components/Main';
-import SearchBar from '../components/SearchBar';
+import CardList from '@/components/CardList';
+import Header from '@/components/Header';
+import Main from '@/components/Main';
+import SearchBar from '@/components/SearchBar';
 
 function Home() {
   return (

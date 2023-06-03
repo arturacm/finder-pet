@@ -1,5 +1,5 @@
-import { useAppSelector } from '../../../redux/hooks';
-import { selectSavedPetsQuantity } from '../../../redux/savedPets/selectors';
+import { useAppSelector } from '@/redux/hooks';
+import { selectSavedPetsQuantity } from '@/redux/savedPets/selectors';
 import style from './style.module.scss';
 import heartgray from '/icons/Heart-gray.svg';
 import heartred from '/icons/Heart-red.svg';
