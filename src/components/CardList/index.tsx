@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import style from './style.module.scss';
 import PetCard from './PetCard';
 import MasonryGallery from '../MasonryGallery';
+import { useSearchParams } from 'react-router-dom';
 
 const petsData = [
   {
@@ -87,14 +88,39 @@ const petsData = [
   },
 ] as const;
 
-const cards = petsData.map(props => <PetCard {...props} key={props.id} />);
-
 const CardList = (): React.ReactElement => {
+  const [searchParam] = useSearchParams();
+  const filteredCards = useMemo(
+    () =>
+      petsData
+        .filter(
+          ({ type, name, breed }) =>
+            type === (searchParam.get('type') ?? type) &&
+            `${name} ${breed}`
+              .toLowerCase()
+              .includes((searchParam.get('name') ?? '').toLowerCase()),
+        )
+        .map(props => <PetCard {...props} key={props.id} />),
+    [searchParam],
+  );
+
   return (
     <>
-      <MasonryGallery className={style.desktop} elements={cards} columns={3} />
-      <MasonryGallery className={style.tablet} elements={cards} columns={2} />
-      <MasonryGallery className={style.mobile} elements={cards} columns={1} />
+      <MasonryGallery
+        className={style.desktop}
+        elements={filteredCards}
+        columns={3}
+      />
+      <MasonryGallery
+        className={style.tablet}
+        elements={filteredCards}
+        columns={2}
+      />
+      <MasonryGallery
+        className={style.mobile}
+        elements={filteredCards}
+        columns={1}
+      />
     </>
   );
 };
