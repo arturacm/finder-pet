@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './style.module.scss';
 import PetCard from './PetCard';
+import MasonryGallery from '../MasonryGallery';
 
 const petsData = [
   {
@@ -13,7 +14,34 @@ const petsData = [
     type: 'dog',
   },
   {
+    id: 'b9a3ac2c-dd26-43ee-ae36-0c5257b58bd1',
+    name: 'Tartar Sauce',
+    image: 'https://itpetblog.com.br/wp-content/uploads/2019/07/grumpy-cat.jpg',
+    breed: 'Grumpy',
+    age: 5,
+    weight: 12,
+    type: 'cat',
+  },
+  {
+    id: 'd9a9fc44-f518-48fd-8063-504b76ede907',
+    name: 'Tartar Sauce',
+    image: 'https://itpetblog.com.br/wp-content/uploads/2019/07/grumpy-cat.jpg',
+    breed: 'Grumpy',
+    age: 5,
+    weight: 12,
+    type: 'cat',
+  },
+  {
     id: '5ec10d78-402c-4347-9210-bcf6e6049d11',
+    name: 'Baxter',
+    image: '/mock/baxter.png',
+    breed: 'French bulldog',
+    age: 5,
+    weight: 12,
+    type: 'dog',
+  },
+  {
+    id: 'd30b86ed-0d57-4c9d-abda-de09191b8e4d',
     name: 'Baxter',
     image: '/mock/baxter.png',
     breed: 'French bulldog',
@@ -30,13 +58,45 @@ const petsData = [
     weight: 12,
     type: 'cat',
   },
+  {
+    id: '70b4512f-da9d-41ac-ac0a-378645cfc692',
+    name: 'Tartar Sauce',
+    image: 'https://itpetblog.com.br/wp-content/uploads/2019/07/grumpy-cat.jpg',
+    breed: 'Grumpy',
+    age: 5,
+    weight: 12,
+    type: 'cat',
+  },
+  {
+    id: 'd46fefdf-010f-44a2-8083-70274be536ab',
+    name: 'Tartar Sauce',
+    image: 'https://itpetblog.com.br/wp-content/uploads/2019/07/grumpy-cat.jpg',
+    breed: 'Grumpy',
+    age: 5,
+    weight: 12,
+    type: 'cat',
+  },
+  {
+    id: 'dbef14ac-1bb6-41f1-864b-26b7c98836df',
+    name: 'Baxter',
+    image: '/mock/baxter.png',
+    breed: 'French bulldog',
+    age: 5,
+    weight: 12,
+    type: 'dog',
+  },
 ] as const;
-const CardList = (): React.ReactElement => {
-  const cards = petsData.map((props) => (
-    <PetCard {...props} key={props.id} />
-  ));
 
-  return <div className={style.cardList}>{cards}</div>;
+const cards = petsData.map(props => <PetCard {...props} key={props.id} />);
+
+const CardList = (): React.ReactElement => {
+  return (
+    <>
+      <MasonryGallery className={style.desktop} elements={cards} columns={3} />
+      <MasonryGallery className={style.tablet} elements={cards} columns={2} />
+      <MasonryGallery className={style.mobile} elements={cards} columns={1} />
+    </>
+  );
 };
 
 export default CardList;
