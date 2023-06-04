@@ -3,6 +3,11 @@ import style from './style.module.scss';
 import PetCard from './PetCard';
 import MasonryGallery from '../MasonryGallery';
 import { useSearchParams } from 'react-router-dom';
+import Button from '../Button';
+
+const messages = {
+  button: 'Show more'
+}
 
 const petsData = [
   {
@@ -121,6 +126,11 @@ const CardList = (): React.ReactElement => {
         elements={filteredCards}
         columns={1}
       />
+      <div className={style.gradientContainer}>
+        <div className={style.gradient}>
+          <Button>{messages.button}</Button>
+        </div>
+      </div>
     </>
   );
 };
