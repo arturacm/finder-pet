@@ -29,17 +29,18 @@
     border: 1px solid $gray-200;
     border-radius: 8px;
   }
-  & p {
-    text-align: center;
-    font-size: 12px;
-    font-weight: 600;
-    color: $gray-900;
-    margin: 20px;
-    margin-bottom: 32px;
-  }
 }
 
-.login {
+.forgotPassword {
+  color: $red-400;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  margin: 30px;
+}
+
+.signup {
   color: $gray-900;
   font-size: 12px;
   font-weight: 600;

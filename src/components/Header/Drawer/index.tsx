@@ -2,8 +2,8 @@ import style from './style.module.scss';
 import close from '/icons/cross.svg';
 import Button from '../../Button';
 import ButtonIcon from '../../ButtonIcon';
-import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useCallback, useEffect, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import routes from '../../../routes/routes';
 
 const messages = {
@@ -22,6 +22,10 @@ interface DrawerProps {
 
 const Drawer = ({ onClose, open, className }: DrawerProps) => {
   const overlay = useRef<HTMLDivElement>(null);
+
+  const navigate = useNavigate();
+
+  const handleLogin = useCallback(() => navigate(routes.login), [navigate]);
 
   useEffect(() => {
     const overlayElement = overlay.current;
@@ -60,9 +64,10 @@ const Drawer = ({ onClose, open, className }: DrawerProps) => {
         </nav>
         <hr className={style.divider} />
         <nav className={style.signIn}>
-          <Button>{messages.signIn}</Button>
+          <Button onClick={handleLogin}>{messages.signIn}</Button>
           <p className={style.signup}>
-            {messages.notMember} <Link to={routes.signUp}>{messages.signUp}</Link>
+            {messages.notMember}{' '}
+            <Link to={routes.signUp}>{messages.signUp}</Link>
           </p>
         </nav>
       </div>

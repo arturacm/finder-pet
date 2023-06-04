@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import LoginBanner from '@/components/LoginBanner';
+import routes from '../routes';
+import { Link } from 'react-router-dom';
 
 const messages = {
   form: {
@@ -16,6 +18,8 @@ const messages = {
     termsOfService:
       'By clicking the “Sign up” button, you agree to Finder Pet Terms of Service and confirm that you have read our Privacy Policy.',
   },
+  alreadyMember: 'Already a member?',
+  login: 'Sign In',
 };
 
 const createUserFormSchema = z.object({
@@ -75,6 +79,9 @@ function SignUp() {
         <p>{messages.form.termsOfService}</p>
         <Button type="submit">{messages.form.submit}</Button>
       </form>
+      <p className={style.login}>
+        {messages.alreadyMember} <Link to={routes.login}>{messages.login}</Link>
+      </p>
     </LoginBanner>
   );
 }
