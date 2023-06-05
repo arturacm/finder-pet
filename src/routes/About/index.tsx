@@ -3,6 +3,7 @@ import Main from '@/components/Main';
 import petsCompilation from '/pets-compilation.png';
 import style from './style.module.scss';
 import Button from '@/components/Button';
+import Footer from '@/components/Footer';
 
 const messages = {
   head: 'Faucibus varius ultrices sollicitudin.',
@@ -31,6 +32,7 @@ function Home() {
           </div>
         </div>
       </Main>
+      <Footer />
     </>
   );
 }

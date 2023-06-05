@@ -1,0 +1,87 @@
+@import '@/styles/colors.scss';
+@import '@/styles/mixins.scss';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+  width: 100%;
+  background-color: $gray-150;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-around;
+  height: 90px;
+  width: calc(100% - 2px);
+  border: 1px solid $gray-200;
+  @include for-desktop-up {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.tags {
+  @include flex-centered;
+  gap: 65px;
+  overflow: hidden;
+
+  & span {
+    color: $gray-700;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.social {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  a {
+    text-decoration: none;
+    color: $gray-700;
+    border-left: 1px solid $gray-200;
+    @include flex-centered;
+  }
+  border-top: 1px solid $gray-200;
+  @include for-desktop-up {
+    border-top: none;
+  }
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
+  max-width: 450px;
+  line-height: 1.2;
+  margin: 23px;
+
+  p {
+    font-size: 20px;
+  }
+
+  @include for-desktop-up {
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: row;
+    max-width: unset;
+  }
+}
+.petsCount {
+  font-weight: 600;
+  font-size: 56px;
+  margin: 0;
+  overflow: hidden;
+  span {
+    color: $red-400;
+  }
+  @include for-tablet-portrait-up {
+    font-size: 80px;
+  }
+
+  @include for-desktop-up {
+    font-size: 120px;
+  }
+}
