@@ -5,9 +5,10 @@ import ButtonIcon from '../../ButtonIcon';
 import { useCallback, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import routes from '../../../routes/routes';
-import { useAppSelector } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { selectUser } from '@/redux/user/selectors';
 import UserPill from '@/components/UserPill';
+import { logout } from '@/redux/user/slice';
 
 const messages = {
   about: 'About',
@@ -15,6 +16,7 @@ const messages = {
   signIn: 'Sign In',
   notMember: 'Not a member?',
   signUp: 'Sign up now',
+  signOut: 'Sign Out',
 };
 
 interface DrawerProps {
@@ -27,12 +29,12 @@ const Drawer = ({ onClose, open, className }: DrawerProps) => {
   const overlay = useRef<HTMLDivElement>(null);
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleLogin = useCallback(() => navigate(routes.login), [navigate]);
 
   useEffect(() => {
     const overlayElement = overlay.current;
-
     if (overlayElement) {
       overlayElement.addEventListener('click', onClose);
     }
@@ -55,6 +57,10 @@ const Drawer = ({ onClose, open, className }: DrawerProps) => {
 
   const user = useAppSelector(selectUser);
 
+  const handleLogout = useCallback(() => {
+    dispatch(logout());
+  }, [dispatch]);
+
   return (
     <div className={className}>
       <div
@@ -74,6 +80,9 @@ const Drawer = ({ onClose, open, className }: DrawerProps) => {
             <>
               <UserPill email={user.email} />
               <hr className={style.divider} />
+              <button className={style.signOut} onClick={handleLogout}>
+                {messages.signOut}
+              </button>
             </>
           )
         ) : (

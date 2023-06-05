@@ -2,6 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import type { User, Session } from '@supabase/supabase-js';
 import { persistData, storageKeys } from '../utils';
+import { supabase } from '@/remote/superbase';
 
 type UserState = {
   user: User | null;
@@ -31,11 +32,19 @@ const userSlice = createSlice({
       state.session = payload.session;
       persistData(storageKeys.userStorageKey, state);
     },
+    logout: state => {
+      state.user = null;
+      state.session = null;
+      persistData(storageKeys.userStorageKey, state);
+
+      supabase.auth.signOut().catch(console.error);
+
+    },
   },
 });
 
 export const selectUser = (state: RootState) => state.userReducer.user;
 
-export const { login } = userSlice.actions;
+export const { login, logout } = userSlice.actions;
 
 export default userSlice.reducer;
