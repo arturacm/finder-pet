@@ -56,7 +56,7 @@ const SearchBar = (): React.ReactElement => {
         className={style.dropdown}
         onChange={handleInputChange}
       >
-        <option value="all">{messages.options.all}</option>
+        <option value="">{messages.options.all}</option>
         <option value="cat">{messages.options.cats}</option>
         <option value="dog">{messages.options.dogs}</option>
       </select>

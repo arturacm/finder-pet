@@ -4,10 +4,23 @@ import PetCard from './PetCard';
 import MasonryGallery from '../MasonryGallery';
 import { useSearchParams } from 'react-router-dom';
 import Button from '../Button';
+import { z } from 'zod';
 
 const messages = {
-  button: 'Show more'
-}
+  button: 'Show more',
+  petType: {
+    cat: 'Cute cat',
+    dog: 'Cute dog',
+    all: 'Cute cat and dog',
+  },
+  noResults: 'No results found :(',
+  results: 'results found on this search',
+};
+
+const queryParamSchema = z.object({
+  type: z.union([z.literal('cat'), z.literal('dog'), z.literal('')]).nullable(),
+  name: z.string().nullable(),
+});
 
 const petsData = [
   {
@@ -95,12 +108,18 @@ const petsData = [
 
 const CardList = (): React.ReactElement => {
   const [searchParam] = useSearchParams();
+
+  const queryParam = queryParamSchema.safeParse({
+    name: searchParam.get('name'),
+    type: searchParam.get('type'),
+  });
+
   const filteredCards = useMemo(
     () =>
       petsData
         .filter(
           ({ type, name, breed }) =>
-            type === (searchParam.get('type') ?? type) &&
+            type === (searchParam.get('type') || type) &&
             `${name} ${breed}`
               .toLowerCase()
               .includes((searchParam.get('name') ?? '').toLowerCase()),
@@ -109,8 +128,26 @@ const CardList = (): React.ReactElement => {
     [searchParam],
   );
 
+  const noResults = filteredCards.length === 0;
+  const hasAnyParam = !searchParam.keys().next().done;
+
   return (
     <>
+      {noResults ? (
+        <h1>{messages.noResults}</h1>
+      ) : (
+        queryParam.success &&
+        hasAnyParam && (
+          <div className={style.searchResult}>
+            <h1>{messages.petType[queryParam.data.type || 'all']}</h1>
+            <p>
+              <span>{filteredCards.length} </span>
+              {messages.results}
+            </p>
+          </div>
+        )
+      )}
+
       <MasonryGallery
         className={style.desktop}
         elements={filteredCards}
@@ -126,11 +163,13 @@ const CardList = (): React.ReactElement => {
         elements={filteredCards}
         columns={1}
       />
-      <div className={style.gradientContainer}>
-        <div className={style.gradient}>
-          <Button>{messages.button}</Button>
+      {!noResults && (
+        <div className={style.gradientContainer}>
+          <div className={style.gradient}>
+            <Button>{messages.button}</Button>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
