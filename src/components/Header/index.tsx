@@ -8,6 +8,9 @@ import fullLogo from '/logo-full.svg';
 import ButtonIcon from '@/components/ButtonIcon';
 import { Link } from 'react-router-dom';
 import routes from '@/routes/routes';
+import { useAppSelector } from '@/redux/hooks';
+import { selectUser } from '@/redux/user/slice';
+import UserPill from '@/components/UserPill';
 
 const messages = {
   intro: "let's explore your pet!",
@@ -20,6 +23,8 @@ const messages = {
 
 const Header = (): React.ReactElement => {
   const [open, setOpen] = useState(false);
+
+  const user = useAppSelector(selectUser);
 
   const handleClose = useCallback(() => setOpen(false), []);
 
@@ -55,9 +60,19 @@ const Header = (): React.ReactElement => {
         </nav>
         <FavoriteIndicator />
 
-        <Link className={style.desktopLinks} to={routes.login}>
-          {messages.login}
-        </Link>
+        {user ? (
+          user.email && (
+            <UserPill
+              className={style.desktopLinks}
+              email={user.email}
+              onlyLogo
+            />
+          )
+        ) : (
+          <Link className={style.desktopLinks} to={routes.login}>
+            {messages.login}
+          </Link>
+        )}
       </nav>
     </header>
   );
