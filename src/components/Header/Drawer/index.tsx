@@ -5,6 +5,9 @@ import ButtonIcon from '../../ButtonIcon';
 import { useCallback, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import routes from '../../../routes/routes';
+import { useAppSelector } from '@/redux/hooks';
+import { selectUser } from '@/redux/user/selectors';
+import UserPill from '@/components/UserPill';
 
 const messages = {
   about: 'About',
@@ -50,6 +53,8 @@ const Drawer = ({ onClose, open, className }: DrawerProps) => {
     };
   }, [onClose]);
 
+  const user = useAppSelector(selectUser);
+
   return (
     <div className={className}>
       <div
@@ -63,13 +68,23 @@ const Drawer = ({ onClose, open, className }: DrawerProps) => {
           <a href="#"> {messages.contact}</a>
         </nav>
         <hr className={style.divider} />
-        <nav className={style.signIn}>
-          <Button onClick={handleLogin}>{messages.signIn}</Button>
-          <p className={style.signup}>
-            {messages.notMember}{' '}
-            <Link to={routes.signUp}>{messages.signUp}</Link>
-          </p>
-        </nav>
+
+        {user ? (
+          user.email && (
+            <>
+              <UserPill email={user.email} />
+              <hr className={style.divider} />
+            </>
+          )
+        ) : (
+          <nav className={style.signIn}>
+            <Button onClick={handleLogin}>{messages.signIn}</Button>
+            <p className={style.signup}>
+              {messages.notMember}{' '}
+              <Link to={routes.signUp}>{messages.signUp}</Link>
+            </p>
+          </nav>
+        )}
       </div>
     </div>
   );

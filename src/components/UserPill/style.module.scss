@@ -1,0 +1,32 @@
+@import '@/styles/colors.scss';
+@import '@/styles/mixins.scss';
+
+
+.userPill {
+    display: flex;
+    align-items: center;
+    gap: 20px
+}
+
+.image {
+    background-color: $red-400;
+    color: $primary-white;
+    border-radius: 50%;
+    @include flex-centered;
+    width: 48px;
+    height: 48px;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h3 {
+        color: $gray-900;
+        margin: 0;
+    }
+    p {
+        color: $gray-700;
+        margin: 0;
+    }
+}
