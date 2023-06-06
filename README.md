@@ -4,10 +4,15 @@ React + TS application for finding and adopting a pet
 Deployed at https://finder-pet.netlify.app/
 
 ## Application
-<img width="1430" alt="image" src="https://github.com/arturacm/finder-pet/assets/63562936/d0eb376e-e2ba-4cf6-a39f-ce15215b33d9">
-<img width="1429" alt="image" src="https://github.com/arturacm/finder-pet/assets/63562936/5562c539-fcfd-4c0c-a1bc-b016a45e0fda">
-<img width="1439" alt="image" src="https://github.com/arturacm/finder-pet/assets/63562936/05649e94-cfb1-48ba-b33a-c05dfb368547">
-<img width="1430" alt="image" src="https://github.com/arturacm/finder-pet/assets/63562936/8cd209c7-b58f-4234-997b-8e06ebea1364">
+<img width="1427" alt="image" src="https://github.com/arturacm/finder-pet/assets/63562936/e2e6e8fd-07f1-4085-b4c3-26dfab1c76f8">
+<img width="1427" alt="image" src="https://github.com/arturacm/finder-pet/assets/63562936/0593fb15-2a7e-45ea-a92d-01d3e4e642b8">
+<img width="1428" alt="image" src="https://github.com/arturacm/finder-pet/assets/63562936/acc67edb-88c4-46f5-b787-73ff90217088">
+<img width="376" alt="image" src="https://github.com/arturacm/finder-pet/assets/63562936/ddafeaab-fa0b-4401-a9b7-6442cd69a1ec">
+<img width="376" alt="image" src="https://github.com/arturacm/finder-pet/assets/63562936/50d1a4ab-721e-466a-a611-82df5ded5fe1">
+<img width="1437" alt="image" src="https://github.com/arturacm/finder-pet/assets/63562936/ea94cf9a-e924-4742-82bf-8657ac54fde0">
+<img width="920" alt="image" src="https://github.com/arturacm/finder-pet/assets/63562936/bb053798-654e-4b41-b02d-3af5b9c38227">
+
+
 
 
 ## Technologies
@@ -26,12 +31,26 @@ Frontend application with:
 - [EsLint](https://eslint.org/)
 - [Lint Staged](https://github.com/okonet/lint-staged)
 - [Husky](https://typicode.github.io/husky/)
+- [Supabase](https://supabase.com/)
 
 - [Commitlint](https://commitlint.js.org/#/)
 - [Vite](https://vitejs.dev/)
 - [React-router-dom V6](https://reactrouter.com/docs/en/v6/getting-started/overview)
 - [yarn](https://classic.yarnpkg.com/lang/en/)
 - [nvm](https://github.com/nvm-sh/nvm)
+
+## Backend
+On the curent version of this project, the backend is partially being mocked but it is using Supabase for initial Auth.
+You can eather create a simple supabase project for handling credentials or you can use this one.
+Note that the project **WONT START** without the propper `.env` credentials.
+
+## Credentials
+You can login on the [deployed website](https://finder-pet.netlify.app/) using the credentials:
+```
+email: admin@admin.com
+password: admin123
+```
+
 
 ## Getting started
 
@@ -44,7 +63,12 @@ Frontend application with:
    ```
    yarn install
    ```
-3. Run the project with
+3. Setup Envs. 
+   ```
+   cp .env.example .env
+   ```
+   Make sure to fill in the values of the secrets like it was mentioned in the **Backend section**
+4. Run the project with
 
    ```
    yarn dev
